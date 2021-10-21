@@ -1,0 +1,118 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+.topmenu{
+    position: absolute;
+    height: 50px;
+    width: 100%;
+}.ulSatu{
+    height: 100%;
+    width: auto;
+    margin: 0 40px 0 0 ;
+    padding: 0;
+    float: right;
+    list-style: none;
+}.ulSatu li{
+    position: relative;
+    display: inline-table;
+    height: 100%;
+    width: auto;
+    margin-left: 20px;
+    text-align: center;
+    line-height: 50px;
+    color: white;
+}.ulSatu li a{
+    text-decoration: none;
+    color: white;
+}.liGallery{
+    position: relative;
+    height: auto;
+    width: 50%;
+}.ulDua{
+    position: absolute;
+    height: auto;
+    width: 130px;
+    display: none;
+    transition: 0.2s ease-out;
+    background-color: white;
+    padding: 0;
+}.ulDua li{
+    height: auto;
+    width: 100%;
+    background-color: white;
+    margin: 0;
+    text-align: left;
+    color: black;
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+    padding-left: 5px;
+}.ulDua li:hover{
+    transition: 0.2s ease-in-out;
+    margin-left: 10px;
+}.ulSatu .liGallery:hover .ulDua{
+    display: block;
+    transition: 0.3s ease-in;
+}
+.topmenu img{
+    height: 100%;
+    float: left;
+}
+.header{
+    height: 300px;
+    width: 100%;
+    background-image: url("http://localhost/baru/foto/chris-henry-v0itngiag3I-unsplash.jpg");
+    background-size: cover;
+    background-position: center;
+}
+.back-black{
+    background-color: #00000054;
+    height: 100%;
+    width: 100%;
+} .back-black h1 {
+    color: rgb(253, 251, 251);
+    width: 100%;
+    height: auto;
+    text-align: center;
+    margin-top: 150px;
+    float: left;
+}
+.konten-gallery{
+    height: auto;
+    width: 90%;
+    /* background-color: royalblue; */
+    margin: 20px 5%;
+}.konten-gallery ul{
+    height: 100%;
+    width: 100%;
+    /* background-color: red; */
+}.konten-gallery ul li{
+    height: 300px;
+    width: 45%;
+    margin-left: 20px;
+    margin-top: 20px;
+    display: inline-table;
+    list-style: none;
+    /* background-color: yellow; */
+}.konten-gallery ul li img{
+    height: 100%;
+    width: 100%;
+    filter: blur(1px);
+    transition: 0.3s ease-out;
+}.konten-gallery ul li img:hover{
+    filter: blur(0px);
+    transition: 0.2s ease-in;
+}.konten-gallery ul li p{
+    font-family: monospace;
+    text-align: center;
+}.futer{
+    text-align: center;
+     height: auto;
+     width: 100%;
+     float: left;
+ } .footer-p{
+    font-size: 30px;
+    margin-bottom: 20px;
+}.futer p{
+    margin-top: 50px;
+}
