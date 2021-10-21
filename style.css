@@ -1,0 +1,202 @@
+*{
+    box-sizing:border-box;
+}
+body{
+    margin: 0;
+    background-color: rgb(214, 214, 214);
+}.topmenu{
+    position: absolute;
+    height: 50px;
+    width: 100%;
+    /* border:1px solid red; */
+}.ulSatu{
+    height: 100%;
+    width: auto;
+    margin: 0 40px 0 0 ;
+    padding: 0;
+    float: right;
+    list-style: none;
+}.ulSatu li{
+    position: relative;
+    display: inline-table;
+    height: 100%;
+    width: auto;
+    margin-left: 20px;
+    text-align: center;
+    line-height: 50px;
+    color: white;
+}.ulSatu li a{
+    text-decoration: none;
+    color: white;
+}.liGallery{
+    position: relative;
+    height: auto;
+    width: 50%;
+}.ulDua{
+    position: absolute;
+    height: auto;
+    width: 130px;
+    display: none;
+    transition: 0.2s ease-out;
+    background-color: white;
+    padding: 0;
+}.ulDua li{
+    height: auto;
+    width: 100%;
+    background-color: white;
+    margin: 0;
+    text-align: left;
+    color: black;
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+    padding-left: 5px;
+}.ulDua li:hover{
+    transition: 0.2s ease-in-out;
+    margin-left: 10px;
+}.ulSatu .liGallery:hover .ulDua{
+    display: block;
+    transition: 0.3s ease-in;
+}.topmenu img{
+    height: 100%;
+    float: left;
+}
+/* css untuk pencarian */
+.konten-cari{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    display: none;
+}.konten-cari input{
+    height: 60px;
+    width: 70%;
+    margin: 15% 15%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid black;
+    font-size: 18px;
+}.konten-cari button{
+    /* background-color: red; */
+    padding: 10px 16px;
+    border: none;
+    margin:2% 2%;
+    float: right;
+    font-size: 18px;
+    background-color: transparent;
+    cursor: pointer;
+    transition: 0.3s ease-out;
+}.konten-cari button:hover{
+    background: red;
+    transition: 0.4s ease-in;
+}
+/* end css pencarian */
+.header{
+    height: 700px;
+    width: 100%;
+    background-image: url("http://localhost:8080/baru/foto/chris-henry-v0itngiag3I-unsplash.jpg");
+    background-size: cover;
+}
+.back-black{
+    background-color: #00000054;
+    height: 100%;
+    width: 100%;
+} .back-black h1 {
+    color: rgb(253, 251, 251);
+    width: 100%;
+    height: auto;
+    text-align: center;
+    margin-top: 250px;
+    float: left;
+}.back-black button {
+    color: white;
+    width: 10%;
+    height: 40px;
+    text-align: center;
+    margin: 50px 45% auto 45%;
+    border: none;
+    background-color: rgb(197, 9, 103);
+    border-radius: 50px;
+}.listfoto {
+    height: auto;
+    width: 90%;
+    float: left;
+    margin: 6% 5% auto 5%;
+}.deskripsi {
+    width: 50%;
+    height: auto;
+    float: left;
+    margin-top: 4%;
+    color:grey;
+    font-family:'Times New Roman', Times, serif;
+}.deskripsi p{
+    font-size: 20px;
+
+}.deskripsi h3 {
+    color : black;
+    font-size: 30px;
+}.deskripsi button{
+    color: white;
+    width: 25%;
+    height: 40px;
+    margin-top: 5%;
+    text-align: center;
+    border: none;
+    background-color: rgb(197, 9, 103);
+    border-radius: 50px;
+}.fotodeskripsi{
+    width: 40%;
+    height: auto;
+    float: right;
+    /* background-color: pink; */
+}.fotodeskripsi img{
+    height: auto;
+    width: 100%;
+    float: left;
+}.listfotodua {
+    height: auto;
+    width: 90%;
+    float: right;
+    margin: 6% 5% auto 5%;
+    padding: 20px;
+    background-color: white
+}.deskripsidua {
+    width: 50%;
+    height: auto;
+    float: left;
+    margin-top: 8%;
+    margin-left: 5%;
+    color:grey;
+    font-family:'Times New Roman', Times, serif;
+}.deskripsidua p{
+    font-size: 20px;
+}.deskripsidua h3 {
+    color : black;
+    font-size: 30px;
+}.deskripsidua button{
+    color: white;
+    width: 25%;
+    height: 40px;
+    margin-top: 5%;
+    text-align: center;
+    border: none;
+    background-color: rgb(197, 9, 103);
+    border-radius: 50px;
+}.fotodeskripsidua{
+    width: 30%;
+    height: auto;
+    float: left;
+    /* background-color: pink; */
+}.fotodeskripsidua img{
+    height: auto;
+    width: 100%;
+}.futer{
+    text-align: center;
+     height: auto;
+     width: 100%;
+     float: left;
+ } .footer-p{
+    font-size: 30px;
+    margin-top: 50px;
+}.futer p{
+    margin-top: 50px;
+}
