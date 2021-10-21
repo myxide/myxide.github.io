@@ -93,7 +93,7 @@ body{
 .header{
     height: 700px;
     width: 100%;
-    background-image: url("http://localhost:8080/baru/foto/chris-henry-v0itngiag3I-unsplash.jpg");
+    background-image: url("foto/chris-henry-v0itngiag3I-unsplash.jpg");
     background-size: cover;
 }
 .back-black{
