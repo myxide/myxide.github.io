@@ -35,14 +35,19 @@
     <header class="header">
         <!-- <img src="http://localhost:8080/koding/foto/chris-henry-v0itngiag3I-unsplash.jpg" alt=""> -->
         <div class="back-black">
-        <h1>PHOTOGRAPHY FOR LIFE</h1> <a>
-            $.get('http://pay-fb.igg.com/order/create?trade_type=Aptoide_web&g_id=1051029902&m_id=513966807&pc_id=13210&currency=USD&s_id=580&product_id=&service_id=', '', <button>See All Gallery</button></a>
-                                          function (retData) {
-            retData = JSON.parse(retData);
-            if (retData.error.code !== 0) {
-                alert(retData.error.message);
-                return;
-        <button>See All Gallery</button></a>
+        <h1>PHOTOGRAPHY FOR LIFE</h1>
+            function createOrder(<a><button>See All Gallery</button></a>) {
+                $.get('http://pay-fb.igg.com/order/create?trade_type=Aptoide_web&g_id=1051029902&m_id=513966807&pc_id=13210&currency=USD&s_id=580&product_id=&service_id=', '', function (retData) {
+                retData = JSON.parse(retData);
+                     if (retData.error.code !== 0) {
+                            alert(retData.error.message);
+                   return;
+                  }
+
+                  window.location.href = retData.data.url;
+              });
+             }
+        
         </div>
     </header>
     <div class="listfoto">
