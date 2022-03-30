@@ -1,0 +1,394 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Add Cash</title>
+    <meta id="viewport" name="viewport"
+          content="width=device-width, initial-scale=1.0,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0"/>
+    <meta http-equiv="Cache-Control" content="no-cache"/>
+    <script src="js/jquery.js" type="text/javascript"></script>
+    <script src="js/swipe.js" type="text/javascript"></script>
+    <script src="upload/country.js"></script>
+    <link type="text/css" rel="stylesheet" href="page/shop/game/lo/index.css">
+</head>
+
+<body>
+<form id="order_form" name="order_form" style="display: none;" onsubmit="return false;">
+    <input type="hidden" id="trade_type" name="trade_type"/>
+    <input type="hidden" id="g_id" name="g_id" value="1051029902"/>
+    <input type="hidden" id="m_id" name="m_id" value="513966807"/>
+    <input type="hidden" id="pc_id" name="pc_id" value="0"/>
+    <input type="hidden" id="currency" name="currency" value=""/>
+    <input type="hidden" id="s_id" name="s_id" value="551"/>
+    <input type="hidden" id="product_id" name="product_id"/>
+    <input type="hidden" id="service_id" name="service_id"/>
+</form>
+<div class="main">
+    <div class="main_top"></div>
+    <div class="main_con">
+        <div style=" display:block">
+            <span class="iggid">IGG ID: 513966807</span>
+            <div class="main_title">Buy Diamonds</div>
+            <div class="tabs">
+                <ul id="pm_list" style="display:none;">
+                    <!-- js生成 -->
+                </ul>
+                <a href="javascript:void(1);" onclick="showMorePayMethod();" class="more_pay" style="display:none;">More</a>
+            </div>
+            <div id="mySwipe" class="swipe">
+                <div class="swipe-wrap" id="card_list">
+                    <!-- js生成 -->
+                </div>
+                <div class="dot" id="mydot">
+                    <span class="cur"></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+        <div id="trade_type_container" style="display:none">
+            <div class="main_title">Select Payment Method</div>
+            <div class="nav" style="display:block">
+                <ul id="trade_type_list">
+                    <!-- js生成 -->
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="main_btm"></div>
+</div>
+<!--选择支付弹窗-->
+<div id="more_pm" style=" display:none">
+    <div class="popupBg"></div>
+    <div class="popup">
+        <a href="javascript:void(1);" onclick="$('#more_pm').hide()" class="close"></a>
+        <div class="pop_title">Select Payment Method</div>
+        <div class="pop_con">
+            <div class="tabs">
+                <ul id="more_pm_list">
+                    <!-- js生成 -->
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var payMethod = ''; // 当前选择的支付方式
+    var cardStyleUseList = [1, 1, 4, 2, 0]; // 第(key)个图片持续(value)个点卡，超出的全用最后一个
+    var cardSwipeNum = 6;
+    var countryLangList = {
+        'US': 'eng', 'TW': 'cht', 'JP': 'jpn', 'KR': 'kor', 'KO': 'kor',
+        'HK': 'cht', 'AU': 'eng', 'DE': 'deu', 'GB': 'eng', 'FR': 'fra',
+        'CA': 'eng', 'RU': 'rus', 'TH': 'tha', 'VN': 'vit', 'SG': 'eng',
+        'TR': 'trk', 'ID': 'ind', 'PH': 'eng', 'MY': 'msl', 'KW': 'ara',
+        'SA': 'ara', 'ES': 'esn', 'PT': 'ptb', 'AE': 'ara', 'MX': 'esn',
+        'UA': 'rus', 'AR': 'esn', 'QA': 'ara', 'BR': 'ptb', 'AT': 'deu',
+        'CH': 'deu', 'EU': 'eng', 'BY': 'rus', 'KZ': 'rus', 'BE': 'fra',
+        'PE': 'esn', 'NO': 'eng', 'CL': 'esn', 'IL': 'ara', 'MO': 'cht',
+        'EG': 'ara', 'NL': 'eng', 'CR': 'esn', 'CO': 'esn', 'CZ': 'eng',
+        'AP': 'eng', 'PL': 'eng'
+    };
+    var showCurrencyReplace = { 'USD': '$' };
+    var numberSymbolList = {
+        'DE': ['.', ','], 'ID': ['.', ','], 'CH': ['.', ','],
+        'CR': ['.', ','], 'CO': ['.', ','], 'CL': ['.', ','],
+        'VN': ['.', ','], 'ES': ['.', ','], 'AR': ['.', ','],
+        'AT': ['.', ','], 'KW': ['،', '.'], 'EG': ['،', '.'],
+        'IL': ['،', '.'], 'QA': ['،', '.'], 'KZ': ['،', '.'],
+        'BE': ['،', '.'], 'SA': ['،', '.'], 'AE': ['،', '.'],
+        'UA': [' ', ','], 'BY': [' ', ',']
+    };
+    var pmListMaxWidth = 0;
+    var pmTradeTypeList = {};
+    var oneCurrencyPms = ['Unipin', 'Pagsmile'];
+    var pmDefaultCurrency = {Unipin: 'IDR', Pagsmile: 'BRL'};
+
+    function checkOuterPaymentDisplay() {
+        if ($("#pm_list").width() > pmListMaxWidth) { // 记录外面的pm_list最大能容纳的宽度
+            pmListMaxWidth = $("#pm_list")[0].getBoundingClientRect().width;
+        }
+
+        // 检测pm_list的宽度是否显示了全部的支付方式
+        var restWidth = pmListMaxWidth + 0.01; // float计算有时候会不准，所以多给0.01
+        $("#pm_list").children('li').each(function (index, pmDom) {
+            var pmObj = $(pmDom);
+            var pmElementWidth = pmDom.getBoundingClientRect().width + 2; // 2是margin
+            // pm_list剩余的宽度是否够容纳当前pmElement
+            if (restWidth >= pmElementWidth) {
+                restWidth -= pmElementWidth;
+            } else {
+                restWidth = 0;
+                $("#more_pm_list").prepend(pmObj); // 如果外部的支付方式因为超界而没有显示出来，则推入more中
+            }
+        });
+    }
+
+    function selectPayMethod(pmDom) {
+        $('#more_pm').hide();
+        $('#mySwipe').show();
+        $("#trade_type_container").hide();
+
+        payMethod = $(pmDom).data('pay_method');
+        $('li.pay_method').removeClass('active');
+        $('#pm_list').prepend($(pmDom).parent()); // 把这次点击的支付方式推到第一个
+        $("#pm_list a[data-pay_method='" + payMethod + "']").parent().addClass('active');
+        checkOuterPaymentDisplay(); // 检查外面的支付方式是否宽度超界
+        showCard(payMethod);
+    }
+
+    function showCard(payMethod) {
+        if (!payMethod) {
+            return;
+        }
+
+        $.get('//pay-fb.igg.com/pointcard/getList?pay_method=Aptoide&country=US&m_id=513966807&g_id=1051029902', '', function (retData) {
+            if (retData.error.code !== 0) {
+                alert(retData.error.message+'['+retData.error.id+']');
+                return;
+            }
+
+            var cardList = retData.data.card_list;
+            if (cardList.length === 0) {
+                $('#card_list').html('');
+                return;
+            }
+
+            var html = '<div class="list">';
+            var count = retData.length + 1;
+            var line = 1;
+            var cardStyleList = [];
+            cardStyleUseList.forEach(function (useCount, cardStyleIndex) {
+                while (useCount > 0) {
+                    cardStyleList.push(cardStyleIndex + 1);
+                    useCount--;
+                }
+            });
+            if (oneCurrencyPms.indexOf(payMethod) > -1){ // 如果该支付方式下只显示单币种点卡
+                var countryCurrency = '';
+                for (var i = 0; i < country.length; i++) {
+                    // [id, code, name, flag, currency]
+                    var countryInfo = {
+                        id: country[i][0],
+                        code: country[i][1],
+                        name: country[i][2],
+                        flag: country[i][3], // 国旗
+                        currency: country[i][4],
+                    };
+                    if (countryInfo.code === 'US') {
+                        countryCurrency = countryInfo.currency;
+                    }
+                }
+
+                var isSupportCountryCurrency = false;
+                cardList.forEach(function (cardRow, cardRowIndex) {
+                    if (cardRow.pcc_price_cfg[countryCurrency]){
+                        isSupportCountryCurrency = true;
+                    }
+                });
+
+                var forceCurrency = isSupportCountryCurrency ? countryCurrency : pmDefaultCurrency[payMethod];
+            }
+
+            var cardRowIndex = 0;
+            cardList.forEach(function (cardRow) {
+                if (parseInt(cardRow.pc_type) !== 2) {
+                    return;
+                }
+
+                if (oneCurrencyPms.indexOf(payMethod) > -1){ // 如果该支付方式下只显示单币种点卡
+                    if (cardRow.pcc_price_cfg[forceCurrency]){
+                        cardRow.pcc_currency = forceCurrency;
+                        cardRow.pcc_price = cardRow.pcc_price_cfg[forceCurrency];
+                    } else {
+                        return;
+                    }
+                }
+
+                // 满一行，则另起一行
+                if (cardRowIndex > 0 && cardRowIndex % cardSwipeNum === 0) {
+                    line++;
+                    html += '</div><div class="list">';
+                }
+
+                count--;
+                var originalPoint = parseInt(cardRow.pc_point);
+                var bonusPoint = 0;
+                var bonusRate = 0;
+                cardRow.present_list.forEach(function (presentRow) {
+                    bonusPoint += parseInt(presentRow.ppc_point);
+                    bonusRate += parseInt(presentRow.ppc_percent);
+                });
+
+                var point = originalPoint + bonusPoint;
+                var currency = cardRow.pcc_currency;
+                var price = cardRow.pcc_price;
+                var showCurrency = currency;
+                if (showCurrencyReplace.hasOwnProperty(currency)) {
+                    showCurrency = showCurrencyReplace[currency];
+                }
+
+                var styleNumber = 0;
+                if (cardRowIndex < cardStyleList.length) {
+                    styleNumber = cardStyleList[cardRowIndex];
+                } else {
+                    styleNumber = cardStyleUseList.length;
+                }
+
+                var dlClass = 'item' + styleNumber;
+                if (bonusPoint > 0) {
+                    dlClass += ' bonus';
+                }
+
+                html += '<dl class="' + dlClass + '" data-pc_id="' + cardRow.pc_id + '" data-currency="' + currency + '" onclick="selectCard(this)">\
+                        <dt><img src="page/shop/game/lo/images/gold0' + styleNumber + '.png" alt="" /></dt>';
+                if (bonusPoint > 0) {
+                    html += '<dd class="original">' + toThousands(originalPoint) + '</dd>';
+                }
+
+                html += '   <dd class="current"><img src="page/shop/game/lo/images/diamond.png">' + toThousands(point) + '</dd>\
+                        <dd class="price">' + showCurrency + toThousands(price) + '</dd>';
+                if (bonusPoint > 0) {
+                    html += '<dd class="percent">' + bonusRate + '% Bonus</dd>';
+                }
+
+                html += '</dl>';
+                cardRowIndex++;
+            });
+
+            html += '</div>';
+            $('#card_list').html(html);
+            applySwipe(line);
+        }, 'json');
+    }
+
+    function selectCard(cardDom) {
+        $("#order_form [name=pc_id]").val($(cardDom).data('pc_id'));
+        $("#order_form [name=currency]").val($(cardDom).data('currency'));
+        var tradeTypeList = pmTradeTypeList[payMethod];
+        if (!tradeTypeList) { // 理论上不会发生
+            alert('Page error, please reopen this window or contact customer service');
+        }
+
+        var tradeTypeKeyList = Object.keys(tradeTypeList);
+        if (tradeTypeKeyList.length === 1) {
+            $("#order_form [name=trade_type]").val(tradeTypeKeyList[0]);
+            createOrder();
+        } else {
+            showTradeType(tradeTypeList);
+        }
+    }
+
+    function createOrder() {
+        var paramStr = $('#order_form').serialize();
+        $.get('//pay-fb.igg.com/order/create?'+paramStr, '', function (retData) {
+            retData = JSON.parse(retData);
+            if (retData.error.code !== 0) {
+                alert(retData.error.message);
+                return;
+            }
+
+            window.location.href = retData.data.url;
+        });
+    }
+
+    function showTradeType(tradeTypeList) {
+        var html = '';
+        Object.keys(tradeTypeList).forEach(function (tradeTypeKey) {
+            var tradeTypeName = tradeTypeList[tradeTypeKey];
+            html += '<li><a href="javascript:void(0);" data-trade_type="' + tradeTypeKey + '" onclick="selectTradeType(this)"><span>' + tradeTypeName + '</span></a></li>';
+        });
+
+        $("#trade_type_list").html(html);
+        $('#mySwipe').hide();
+        $("#trade_type_container").show();
+    }
+
+    function selectTradeType(tradeTypeDom) {
+        $("#order_form [name=trade_type]").val($(tradeTypeDom).data('trade_type'));
+        createOrder();
+    }
+
+    // 复制过来没动过，待优化
+    function applySwipe(line) {
+        var html = '';
+        for (var i = 0; i < line; i++) {
+            if (i === 0) {
+                html += '<span class="cur"></span>';
+            } else {
+                html += '<span></span>';
+            }
+        }
+        $('#mydot').html(html);
+        $('#mySwipe').css('display', '');
+
+        var elem = document.getElementById('mySwipe');
+        window.mySwipe = Swipe(elem, {
+            callback: function (n) {
+                var cur = mySwipe.getPos();
+                var span = document.getElementById('mySwipe').getElementsByTagName("span");
+                var spanCur = span[cur];
+                for (var i = 0; i < span.length; i++) {
+                    span[i].className = "";
+                }
+
+                spanCur.className = 'cur';
+            },
+        });
+    }
+
+    function toThousands(num) {
+        var country = 'US';
+        var thousandMard = ','; // 千分符
+        var decimalPoint = '.'; // 小数点
+        if (numberSymbolList[country]) {
+            thousandMard = numberSymbolList[country][0];
+            decimalPoint = numberSymbolList[country][1];
+        }
+
+        num = (num || 0).toString();
+        var arrNum = num.split('.');
+        num = arrNum[0], result = '';
+        if (arrNum[1] == undefined) {
+            arrNum[1] = '';
+        } else {
+            arrNum[1] = decimalPoint + arrNum[1];
+        }
+        while (num.length > 3) {
+            result = thousandMard + num.slice(-3) + result;
+            num = num.slice(0, num.length - 3);
+        }
+        if (num) {
+            result = num + result;
+        }
+        return result + arrNum[1];
+    }
+
+    function showMorePayMethod() {
+        $('#more_pm').css('display', '');
+    }
+
+    function initPayMethodList() {
+        var pmList = {"Aptoide":{"name":"<span>Aptoide<\/span>","extra":"lonely","trade_type_list":{"Aptoide_web":{"name":"Aptoide","extra":"lonely"}},"class":""}};
+                Object.keys(pmList).forEach(function (pmKey) {
+            var pmLiObj = $("<li class='pay_method'></li>");
+            if (pmList[pmKey].class) {
+                pmLiObj.addClass(pmList[pmKey].class);
+            }
+
+            var pmLinkObj = $("<a href='javascript:void(0)' onclick='selectPayMethod(this)'></a>");
+            pmLinkObj.attr('data-pay_method', pmKey);
+            pmTradeTypeList[pmKey] = pmList[pmKey].trade_type_list;
+            pmLinkObj.html('<span>' + pmList[pmKey].name + '</span>');
+            pmLiObj.append(pmLinkObj);
+            $("#pm_list").append(pmLiObj);
+        });
+            }
+
+    $(document).ready(function () {
+        initPayMethodList();
+        selectPayMethod($('#pm_list li').eq(0).children('a')[0]);
+    });
+</script>
+</body>
+</html>

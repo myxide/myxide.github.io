@@ -1,0 +1,141 @@
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td { margin: 0; padding: 0; }
+h1, h2, h3, h4, h5, h6 { font-weight: normal; font-size: 100%; }
+address, caption, cite, code, dfn, em, th, var { font-weight: normal; font-style: normal; }
+table { border-collapse: collapse; border-spacing: 0; }
+fieldset, img, abbr, acronym { border: 0; }
+input, textarea, select { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px; }
+caption, th { text-align: left; }
+q:before, q:after { content: ''; }
+ul, ol, dl { list-style: none; }
+html { -webkit-text-size-adjust: none; }
+.clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+.clearfix { display: inline-block; }
+/* Hide from IE Mac \*/
+.clearfix { display: block; }
+/* End hide from IE Mac */
+html { font-size:62.5%}
+body { background: #312b38; font: normal 1.4rem/1 Arial, Helvetica, sans-serif, '微軟正黑體', '微軟雅黑'; color: #fff; background: #f3db57 url(/page/shop/game/lo/images/body.jpg) no-repeat center top; background-size: cover; padding:5px; }
+a { text-decoration: none; }
+.main { max-width: 66rem; margin:0 auto; }
+.main_top { height: 20px; background: url(/page/shop/game/lo/images/main_top.png) no-repeat 0 0; background-size: 100% 20px; }
+.main_con {padding:0 .5rem ; min-height: 25rem; background: url(/page/shop/game/lo/images/main_con.png) repeat-y 0 0; background-size: 100% auto; overflow:hidden; position:relative }
+.main_btm { height: 20px; background: url(/page/shop/game/lo/images/main_btm.png) no-repeat 0 0; background-size: 100% 20px; }
+.main_title { height: 3.2rem; padding-top:1rem ; text-align: center; color: #fff0c4; font-size: 2rem; background: url(/page/shop/game/lo/images/bg_title.png) no-repeat center 0; background-size:70% auto; text-shadow:0 1px 0 #000,0 -1px 0 #000,1px 0 0 #000,-1px 0 0 #000; font-weight:bold }
+/*list_flag*/
+.list_contry { width: 100%; display: inline-block; }
+.list_contry ul{margin-top:20px;}
+.list_contry li { float: left; width: 20%; margin: 0 auto 10px; text-align: center; white-space:nowrap }
+.list_contry li img { height:30px; width: 30px; display: block; margin: 0 auto 3px; border: 1px solid #c4c4c4;border-radius: 50%; -webkit-order-radius: 50%; }
+.list_contry li a { color: #d1d1d1; }
+.list_contry li a:active { color: #fff; }
+/*tabs*/
+.tabs { min-height: 30px; text-align: center; font-weight: bold; margin:10px 0; }
+.tabs ul { display: inline-block; overflow: hidden; height:34px; max-width:80% }
+.tabs li { float: left; height: 30px; margin: 0 1px 4px; }
+.tabs li a { font-size: 13px; display: inline-block; height: 30px; background: url(/page/shop/game/lo/images/btns.png) no-repeat left -60px; background-size: 400px auto; text-align: center; padding-left: 10px; }
+.tabs li a span { display: inline-block; min-width: 75px; height: 30px; padding-right: 10px; line-height: 28px; color: #fff; text-align: center; background: url(/page/shop/game/lo/images/btns.png) no-repeat right -90px; background-size: 400px auto; }
+.tabs li.active a, .tabs li a:active { background-position: 0 0 }
+.tabs li.active a span, .tabs li a:active span { background-position: right -30px; }
+.btn_back { height: 30px; width: 30px; display: inline-block; background: url(/page/shop/game/lo/images/back.png) no-repeat 0 0; background-size: 100% 100%; position: absolute; top:0; left: 20px; }
+.nav { margin: 10px auto; text-align: center; }
+.nav ul { display: inline-block }
+.nav li { display: inline-block;text-align:center; margin:0 .5rem 1.2rem}
+.nav li a { font-size: 1.3rem; display: inline-block; height: 60px; padding-left: 10px; background: url(/page/shop/game/lo/images/bg_nav.png) no-repeat left 0; background-size: 400px auto; text-align: center; }
+.nav li a span { display: inline-block; min-width: 155px; height:50px; padding:5px 10px 5px 0; line-height: 50px; color: #000; text-align: center; background: url(/page/shop/game/lo/images/bg_nav.png) no-repeat right -60px; background-size: 400px auto; }
+.nav li a span img { vertical-align: middle; max-height: 100%; margin: 0 5px; }
+/*main*/
+.content {}
+.swipe{ width:100%; overflow:hidden}
+.swipe,.swipe-wrap{ overflow:hidden; position:relative}
+.swipe-wrap > div{float: left; position: relative;}
+.list { text-align: center; overflow: hidden; margin:10px auto ; }
+.list dl { display: inline-block; margin: 0 5px 10px; width: 90px; height: 150px; position: relative; cursor: pointer; outline: none; background: url(images/bg_item1.png) no-repeat; background-size: 100% 100%;  }
+.list dl.item1 { background: url(/page/shop/game/lo/images/bg_item1.png) no-repeat; background-size: 100% 100%; }
+.list dl.item2 { background: url(/page/shop/game/lo/images/bg_item2.png) no-repeat; background-size: 100% 100%; }
+.list dl.item3 { background: url(/page/shop/game/lo/images/bg_item3.png) no-repeat; background-size: 100% 100%; }
+.list dl.item4 { background: url(/page/shop/game/lo/images/bg_item4.png) no-repeat; background-size: 100% 100%; }
+.list dl.item5 { background: url(/page/shop/game/lo/images/bg_item5.png) no-repeat; background-size: 100% 100%; }
+.list dt {width:100%; height: 63px; position: absolute; top:50%; right:0; margin-top:-35px;overflow: hidden; text-align:center }
+.list dt img { display: block;width:100% }
+.list dd { font-size: 13px; font-weight: bold; }
+.list .price { width: 100%; text-align: center; color: #ece363; position: absolute; z-index: 1; left: 0; top: 10px; text-shadow:0 1px 1px #000,0 -1px 1px #000,1px 0 1px #000,-1px 0 1px #000; font-size: 15px; line-height: 1; }
+.list .original{ display: none; width: 100%; position: absolute; z-index: 1; left: 0; bottom: 30px; text-align: center; text-indent: 24px; font-weight: bold; font-size: 13px; color: #ececec;  text-shadow:0 1px 1px #000,0 -1px 1px #000,1px 0 1px #000,-1px 0 1px #000; text-decoration: line-through; }
+.list .current { width: 100%; position: absolute; z-index: 1; left: 0; bottom: 8px; text-align: center; font-weight: bold; font-size: 17px; color: #ece363;  text-shadow:0 1px 1px #000,0 -1px 1px #000,1px 0 1px #000,-1px 0 1px #000;}
+.list .current img { height:18px; vertical-align: middle;}
+.list .percent{ display: none; position: absolute; z-index: 1; left: 3px; right:3px; bottom: 50px; text-align: center; padding:2px 0;  color: #ece363;background-color: rgba(0, 0, 0, .2); font-size: 13px;text-shadow:0 1px 1px #000,0 -1px 1px #000,1px 0 1px #000,-1px 0 1px #000;  }
+.dot { text-align:center }
+.dot span { display: inline-block; width: 23px; height: 23px; background: url(/page/shop/game/lo/images/arrow.png) no-repeat 0 0; background-size: 100% auto }
+.dot span.cur { background-position: 0 -23px; }
+
+.list dl.bonus .current img {margin-top: -22px; }
+.list dl.bonus .original,.list dl.bonus .percent{ display: block;}
+.list dl.bonus dt{margin-top:-55px;}
+/*mycard*/
+.mycard_info {margin:10px 0; font-size:1.5rem; text-align:center; font-weight:bold; color: #fbd244; text-shadow: 0 0 1px #000; }
+.exchange { margin: 10px auto; padding-left:4%; }
+.exchange .formElement { margin-bottom: 10px; }
+.exchange .title { margin-top: 20px; font-size:1.2rem; color: #f4cd89; text-shadow: none; font-weight: bold;  text-shadow:0 1px 0 #000,0 -1px 0 #000,1px 0 0 #000,-1px 0 0 #000;}
+.exchange label { float: left;display: block; text-align: right; padding: 6px 0 }
+.exchange .inputText { width:16rem; padding:6px; border: none; color: #999; }
+.exchange .inputText:focus { color: #333; }
+.btnExchange { display: block; padding-left: 10px; height: 30px; border: none; background: url(/page/shop/game/lo/images/btns.png) no-repeat left 0; background-size: 400px auto; color: #fffc00; cursor: pointer; margin-left:6.1em; }
+.btnExchange span { display: inline-block; height: 30px; padding-right: 10px; line-height: 30px; color: #fffc00; text-align: center; background: url(/page/shop/game/lo/images/btns.png) no-repeat right -30px; background-size: 400px auto; }
+.mycard_pays { }
+.exchangeList { padding: 5px 0; color: #fff; font-size:1.2rem; text-shadow:0 1px 0 #000,0 -1px 0 #000,1px 0 0 #000,-1px 0 0 #000; }
+.exchangeList li{ list-style: none; margin-bottom:3px;}
+@media all and (min-width:640px)
+{
+    html { font-size:75%}
+    .main_title{padding-top:1.2rem}
+    .list_contry li img { height:auto; width:50px;}
+    .list dl { margin: 0 6px 12px;}
+    .nav li{ margin:0 .6rem .8rem}
+    .nav li a span {min-width: 174px;}
+}
+@media all and (max-width:639px)
+{
+    .list dl { margin: 0 2px 10px; width:70px; height: 127px;  }
+    .list .current{ font-size:12px;}
+    .list .price{ font-size:12px;}
+    .list .current img { height:15px; vertical-align: middle }
+    .nav li a { font-size: 1.2rem; height:45px; padding-left: 7.5px; background: url(/page/shop/game/lo/images/bg_nav.png) no-repeat left 0; background-size: 300px auto;  }
+    .nav li a span { display: inline-block; min-width:134px; height:35px; padding:5px 7.5px 5px 0; line-height: 35px;  background: url(/page/shop/game/lo/images/bg_nav.png) no-repeat right -45px; background-size: 300px auto; }
+}
+@media all and (min-width:481px) and (max-width:639px)
+{
+    .list dl { margin: 0 5px 10px;}
+}
+@media all and (max-width:480px)
+{
+    .main_title{padding-top:.5rem}
+    .list_contry li{ font-size:12px;}
+    .list dl { margin: 0 1px 10px;}
+    .nav li{ margin:0 .2rem 1.2rem}
+    .nav li a span{ min-width:130px;}
+}
+
+/*新增样式*/
+.iggid{ position:absolute; bottom:5px; right:25px; font-size:14px;}
+.country_select{position: absolute;right:10px;top: 20px; width:100px}
+.more_pay{ height:30px;line-height:30px; color:#fff; padding:0 6px; display:inline-block; vertical-align:top}
+
+.qiwi_input { padding:0 15px;}
+.qiwi_input  label {float: left;line-height: 30px;  font-weight: bold; font-size:13px;}
+.qiwi_input .field {margin-left: 115px;}
+.qiwi_input .field .inputText {width: 100%; padding: 5px; border-radius: 5px;-webkit-border-radius: 5px; background: #FFF;border: 1px solid #333;font-size: 14px;-webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;box-sizing: border-box;box-shadow: inset 2px 2px 3px #ccc;}
+
+
+.popupBg { position: fixed; left:0; top:0; width:100%; height:100%; background:#000; z-index:95; opacity:0.3; }
+.popup { width:80%; padding:10px 0; display:inline-block; border-radius:8px; -moz-border-radius:8px; -webkit-border-radius:8px;border:1px solid #cd8805; background-color:#50566b; position: fixed; top:15%; left:50%; margin-left:-40%; z-index:98; color:#fff0c4;}
+.popup .pop_title { height:30px; line-height:30px; text-align:center; font-size:18px; font-weight:bold; color:#fff0c4; text-shadow:0 1px 0 #000,0 -1px 0 #000,1px 0 0 #000,-1px 0 0 #000;}
+.popup .tabs ul{ max-width:100%; height:auto !important}
+
+.tabs li a{ position: relative;}
+.tabs ul{ overflow: initial;}
+.tabs li a i.discount{ width:62px; height: 39px; background: url(/page/shop/game/lo/images/discount.png) no-repeat; background-size: 100% 100%; position: absolute; top: -23px; right: -10px;}
+.tabs li.alipay a span{ line-height: 21px;}
+.tabs li.alipay a p{  display: block; width: 200px; position: absolute; bottom: 4px; left: 50%; margin-left: -100px; text-align: center; color: #fff; font-style: normal; font-size: 12px; -webkit-transform: scale(0.8); transform: scale(0.8); }
+
+.popup .pop_con { padding: 0 10px; max-height:35vw; overflow-x:hidden; overflow-y:auto}
+.close{ width:40px; height:40px; background:url(/page/shop/game/lo/images/close.png) no-repeat 0 0; background-size:100%; position:absolute; top:-20px; right:-20px; z-index:100}
